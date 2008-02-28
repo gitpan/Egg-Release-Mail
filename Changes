@@ -1,0 +1,5 @@
+Revision history for Perl extension .
+
+0.01  Sun Feb 24 08:28:29 2008
+	- original version; created by Egg::Helper::Build::Module v3.00
+	   with module name Egg::Release::Mail
