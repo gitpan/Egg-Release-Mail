@@ -2,14 +2,14 @@ package Egg::View::Mail::Base;
 #
 # Masatoshi Mizuno E<lt>lusheE<64>cpan.orgE<gt>
 #
-# $Id: Base.pm 285 2008-02-28 04:20:55Z lushe $
+# $Id: Base.pm 328 2008-04-17 13:16:47Z lushe $
 #
 use strict;
 use warnings;
 use Carp qw/ croak /;
 use base qw/ Egg::Base Egg::Component /;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub setup_plugin {
 	my $class= shift;

@@ -10,7 +10,7 @@ license       'perl';
 requires 'Egg::Release'           => '3.03';
 requires 'Egg::Model::FsaveDate'  => '0.01';
 requires 'Egg::Plugin::Net::Scan' => '3.00';
-requires 'MIME::tools'            => '5.42';
+requires 'MIME::Entity'           => '5.42';
 requires 'Digest::SHA1'           => '2.11';
 requires 'Jcode'                  => '2.06';
 

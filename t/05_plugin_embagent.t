@@ -19,6 +19,7 @@ $tool->helper_create_file(
   );
 
 $ENV{HTTP_USER_AGENT}= 'tester';
+$ENV{REMOTE_ADDR}= '255.255.255.255';
 
 my $e= Egg::Helper->run( Vtest => {
 #  vtest_plugins=> [qw/ -Debug /],

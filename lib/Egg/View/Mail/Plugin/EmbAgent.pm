@@ -2,19 +2,26 @@ package Egg::View::Mail::Plugin::EmbAgent;
 #
 # Masatoshi Mizuno E<lt>lusheE<64>cpan.orgE<gt>
 #
-# $Id: EmbAgent.pm 285 2008-02-28 04:20:55Z lushe $
+# $Id: EmbAgent.pm 328 2008-04-17 13:16:47Z lushe $
 #
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.04';
 
 sub __get_mailbody {
 	my($self, $data)= @_;
+	return $self->next::method($data)
+	    if ($data->{no_embagent} or ! $data->{body});
+	my $req   = $self->e->request;
+	my $ipaddr= $req->address;
+	my $regex = $data->{no_embagent_ip_regex}
+	         || qr{^(?:192\.168\.|127\.0\.0\.1)};
+	return $self->next::method($data) if $ipaddr=~m{$regex};
 	my $body= $self->next::method($data);
-	my $req = $self->e->request;
-	unless ($data->{no_embagent}) {
-		$$body.= <<END_AGENT;
+	$$body.= <<END_AGENT;
+
+
 ----------------------------------------------------------------------
 END_AGENT
 		if ($data->{embagent_remote_host}) {
@@ -27,7 +34,6 @@ REMOTE_ADDR : @{[ $req->address ]}
 USER_AGENT  : @{[ $req->agent ]}
 ----------------------------------------------------------------------
 END_AGENT
-	}
 	$body;
 }
 
