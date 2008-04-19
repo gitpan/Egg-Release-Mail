@@ -2,12 +2,12 @@ package Egg::View::Mail::Plugin::EmbAgent;
 #
 # Masatoshi Mizuno E<lt>lusheE<64>cpan.orgE<gt>
 #
-# $Id: EmbAgent.pm 330 2008-04-19 16:42:55Z lushe $
+# $Id: EmbAgent.pm 332 2008-04-19 17:03:10Z lushe $
 #
 use strict;
 use warnings;
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 sub __get_mailbody {
 	my($self, $data)= @_;
@@ -34,7 +34,7 @@ REMOTE_ADDR : @{[ $req->address ]}
 USER_AGENT  : @{[ $req->agent ]}
 ----------------------------------------------------------------------
 END_AGENT
-	$body;
+	$self->next::method($data);
 }
 
 1;

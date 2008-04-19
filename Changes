@@ -1,5 +1,9 @@
 Revision history for Perl extension .
 
+0.06  2008/04/20
+	- fixed for Egg::View::Mail::Plugin::Signature.
+	- fixed for Egg::View::Mail::Plugin::EmbAgent.
+
 0.05  2008/04/20
 	- fixed for Egg::View::Mail::Plugin::Signature.
 	- fixed for Egg::View::Mail::Plugin::EmbAgent.

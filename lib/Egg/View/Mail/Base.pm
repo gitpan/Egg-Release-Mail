@@ -2,7 +2,7 @@ package Egg::View::Mail::Base;
 #
 # Masatoshi Mizuno E<lt>lusheE<64>cpan.orgE<gt>
 #
-# $Id: Base.pm 330 2008-04-19 16:42:55Z lushe $
+# $Id: Base.pm 328 2008-04-17 13:16:47Z lushe $
 #
 use strict;
 use warnings;
