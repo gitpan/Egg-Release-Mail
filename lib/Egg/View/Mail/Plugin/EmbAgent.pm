@@ -2,12 +2,12 @@ package Egg::View::Mail::Plugin::EmbAgent;
 #
 # Masatoshi Mizuno E<lt>lusheE<64>cpan.orgE<gt>
 #
-# $Id: EmbAgent.pm 328 2008-04-17 13:16:47Z lushe $
+# $Id: EmbAgent.pm 330 2008-04-19 16:42:55Z lushe $
 #
 use strict;
 use warnings;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 sub __get_mailbody {
 	my($self, $data)= @_;
@@ -18,7 +18,7 @@ sub __get_mailbody {
 	my $regex = $data->{no_embagent_ip_regex}
 	         || qr{^(?:192\.168\.|127\.0\.0\.1)};
 	return $self->next::method($data) if $ipaddr=~m{$regex};
-	my $body= $self->next::method($data);
+	my $body= $data->{body}= $self->__init_mailbody($data);
 	$$body.= <<END_AGENT;
 
 

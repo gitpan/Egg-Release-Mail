@@ -2,14 +2,14 @@ package Egg::View::Mail::Base;
 #
 # Masatoshi Mizuno E<lt>lusheE<64>cpan.orgE<gt>
 #
-# $Id: Base.pm 328 2008-04-17 13:16:47Z lushe $
+# $Id: Base.pm 330 2008-04-19 16:42:55Z lushe $
 #
 use strict;
 use warnings;
 use Carp qw/ croak /;
 use base qw/ Egg::Base Egg::Component /;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub setup_plugin {
 	my $class= shift;
@@ -69,7 +69,7 @@ Subject: $data->{subject}
 X-Mailer: $data->{x_mailer}
 END_HEADER
 }
-sub __get_mailbody {
+sub __init_mailbody {
 	my($self, $data)= @_;
 	return ($data->{template} or ! $data->{body}) ? do {
 		$self->can('___view')
@@ -85,6 +85,7 @@ sub __get_mailbody {
 		: ref($data->{body}) eq 'SCALAR'  ? $data->{body} : \$data->{body};
 	  };
 }
+*__get_mailbody= \&__init_mailbody;
 
 1;
 

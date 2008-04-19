@@ -2,12 +2,12 @@ package Egg::Release::Mail;
 #
 # Masatoshi Mizuno E<lt>lusheE<64>cpan.orgE<gt>
 #
-# $Id: Mail.pm 327 2008-04-17 12:53:03Z lushe $
+# $Id: Mail.pm 331 2008-04-19 16:47:33Z lushe $
 #
 use strict;
 use warnings;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 1;
 

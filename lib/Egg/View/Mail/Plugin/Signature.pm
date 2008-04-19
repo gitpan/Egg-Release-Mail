@@ -2,17 +2,17 @@ package Egg::View::Mail::Plugin::Signature;
 #
 # Masatoshi Mizuno E<lt>lusheE<64>cpan.orgE<gt>
 #
-# $Id: Signature.pm 328 2008-04-17 13:16:47Z lushe $
+# $Id: Signature.pm 330 2008-04-19 16:42:55Z lushe $
 #
 use strict;
 use warnings;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 sub __get_mailbody {
 	my($self, $data)= @_;
 	return $self->next::method($data) unless $data->{body};
-	my $body= $self->next::method($data);
+	my $body= $data->{body}= $self->__init_mailbody($data);
 	$$body = $data->{body_header}. $$body if $data->{body_header};
 	$$body.= "\n$data->{body_footer}"     if $data->{body_footer};
 	$$body.= "\n$data->{signature}"       if $data->{signature};
